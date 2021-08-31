@@ -1,8 +1,10 @@
 package com.mypack.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.mypack.domain.Books;
 import com.mypack.domain.Category;
 import com.mypack.domain.User;
+import com.mypack.service.BooksService;
 import com.mypack.service.CateService;
 import com.mypack.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class AdminController {
 
 @Autowired
 private CateService cateService;
+
+@Autowired
+private BooksService booksService;
 
     @RequestMapping(value = "/adminLogin",method = {RequestMethod.POST})
     public String login(String username, String password, HttpSession session){
@@ -121,13 +126,24 @@ private CateService cateService;
     @RequestMapping(value = "/userDelete")
     public ModelAndView userDelete(String uid,HttpSession session) throws Exception {
         String[] uids=uid.split(",");
-        cateService.deleteByCid(uids);
+        userService.deleteByUid(uids);
         ModelAndView mv = new ModelAndView();
         List<User> userList = userService.findAll(1,4);
         //PageInfo就是一个分页Bean
         PageInfo pageInfo = new PageInfo(userList);
         mv.addObject("pageInfo", pageInfo);
         mv.setViewName("user_list");
+        return mv;
+    }
+
+    @RequestMapping("/findAllBooks")
+    public ModelAndView findAllBooks(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "4") Integer size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<Books> booksList = booksService.findAll(page,size);
+        //PageInfo就是一个分页Bean
+        PageInfo booksPageInfo = new PageInfo(booksList);
+        mv.addObject("booksPageInfo", booksPageInfo);
+        mv.setViewName("goods_list");
         return mv;
     }
 }

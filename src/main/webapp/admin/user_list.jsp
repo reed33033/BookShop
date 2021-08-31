@@ -181,7 +181,7 @@ $(document).ready(function(){
 		}
 		//将ids传入后台servlet
 		if (confirm("您确定要删除吗？")) {
-			window.location = "user?func=deleteUser&ids=" + ids;
+			window.location = "userDelete?uid=" + ids;
 		}
 	}
 	

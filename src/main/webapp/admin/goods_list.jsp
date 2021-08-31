@@ -104,7 +104,7 @@ $(document).ready(function(){
 		        </tr>
 	        </thead>
 	        <tbody>
-	        	<c:forEach items="${bookes}" var="books" varStatus="i">
+	        	<c:forEach items="${booksPageInfo.list}" var="books" varStatus="i">
 	        		<tr style="text-align: center;">
 				        <td><input class="one" name="" type="checkbox" value="${books.bid }" /></td>
 				        <td>${books.bid }</td>
@@ -137,15 +137,15 @@ $(document).ready(function(){
 	    </table>
 	    <div class="pagin">
 	    	<div class="message">
-	    		共<i class="blue">${pageTool.totalCount }</i>条记录，
-	    		当前显示第&nbsp;<i class="blue">${pageTool.currentPage }&nbsp;</i>页
-	    		共&nbsp;<i class="blue">${pageTool.pageSize }&nbsp;</i>页
+				共<i class="blue">${booksPageInfo.total }</i>条记录,
+				当前显示第&nbsp;<i class="blue">${booksPageInfo.pageNum}&nbsp;</i>页
+				总共&nbsp;<i class="blue">${booksPageInfo.pages}&nbsp;</i>页
 	    	</div>
 	        <ul class="paginList">
-		         <li class="paginItem"><a href="<%=basePath %>books?func=findAllBooks&currentPage=1">首页</a></li>
-		         <li class="paginItem"><a href="<%=basePath %>books?func=findAllBooks&currentPage=${pageTool.lastPage }">上一页</a></li>
-		         <li class="paginItem"><a href="<%=basePath %>books?func=findAllBooks&currentPage=${pageTool.nextPage }">下一页</a></li>
-		         <li class="paginItem"><a href="<%=basePath %>books?func=findAllBooks&currentPage=${pageTool.pageSize }">尾页</a></li>
+				<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllBooks?page=1&size=${booksPageInfo.pageSize}">首页</a></li>
+				<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllBooks?page=${booksPageInfo.pageNum-1}&size=${booksPageInfo.pageSize}">上一页</a></li>
+				<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllBooks?page=${booksPageInfo.pageNum+1}&size=${booksPageInfo.pageSize}">下一页</a></li>
+				<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllBooks?page=${booksPageInfo.pages}&size=${booksPageInfo.pageSize}">尾页</a></li>
 	        </ul>
 	    </div>
 	    <div class="tip">
