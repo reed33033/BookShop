@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+.header .header-top {
+	/*顶部工具栏背景颜色*/
+	background-color: #f9f9f9;
+}
+
+.header .header-top .tools {
+	width: 1147px;
+	height: 34px;
+	margin: auto;
+	background-color: #f9f9f9;
+	border-bottom: 1px solid #f2f2f2;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.header .header-top .tools .tools_list {
+	font-size: 12px;
+	background-color: #f9f9f9;
+	height: 34px;
+	border-bottom: 1px solid #f2f2f2;
+	margin: 0;
+	margin-right: auto;
+}
+
+.header .header-top .tools .tools_list .list_1 {
+	top: 10px;
+	text-align: right;
+	/*规定元素中的文本的水平对齐方式*/
+	font-size: 12px;
+	padding-top: 4px;
+	padding-right: 0;
+	width: 479px;
+	height: 26px;
+	float: right;
+}
+
+.header .header-top .tools .tools_list .list_1>li {
+	/*行内块元素:不独占一行的块级元素;讲列表以行显示*/
+	display: inline-block;
+	/*生成相对定位的元素，相对于其正常位置进行定位。
+	现在文档流中原本的位置*/
+	position: relative;
+	padding-top: 2px;
+	height: 22px;
+	/*设置行间的距离（行高）*/
+	line-height: 21px;
+	/*用于将在一个元素放置于另一元素之后*/
+	z-index: 10000;
+}
+
+.header .header-top .tools .tools_list .list_1 li a {
+	/*将元素显示为块级元素，此元素前后会带有换行符*/
+	display: block;
+	position: relative;
+	line-height: 21px;
+	padding: 0 4px 0 5px;
+	color: #646464;
+}
+
+.header .header-top .tools .tools_list .list_1 li a:hover {
+	background-color: #fff;
+	/*设置背景图像的起始位置*/
+	background-position: right -321px;
+	padding-top: 3px;
+	/*三个属性:上外边距,左和右,下*/
+	margin: -4px -1px 0;
+	border: 1px solid #e6e6e6;
+	border-bottom: none;
+	position: relative;
+	color: #3ed4a7;
+}
+
+.header .header-top .tools .tools_list .list_1>li i {
+	margin-left: 5px;
+}
+
+.header .header-top .tools .tools_list .list_1>li .list_2 {
+	/*绝对定位，相对于浏览器窗口进行定位，将元素框从页面流中完全删除后，重新定位。当拖拽页面滚动条时，该元素随其一起滚动*/
+	position: absolute;
+	top: 25px;
+	/*设置段落的最小高度*/
+	min-height: 60px;
+	min-width: 60px;
+	background-color: #f9f9f9;
+	display: none;
+}
+
+.header .header-top .tools .tools_list .list_1>li:hover .list_2 {
+	/*打开隐藏的列表*/
+	display: block;
+}
+
+.header .header-top .tools .tools_list .list_1>li .list_2 li {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.header .header-top .tools .tools_list .list_1>li .list_2 li a {
+	color: #3ed4a7;
+}
+
+.header .header-top .tools .tools_list .list_1>li .list_2 li a:hover {
+	color: #3ed4a7;
+}
+
+.header .header-top .tools .tools_list .welcome {
+	padding: 5px 0 0 10px;
+	padding-top: 8px;
+	width: 186px;
+	height: 21px;
+	float: right;
+	color: #646464;
+}
+
+.header .header-top .tools .tools_list .welcome a {
+	display: inline-block;
+	margin-right: 4px;
+	color: #646464;
+}
+
+.header .header-top .tools .tools_list .welcome a.login_link {
+	color: #3ed4a7!important;
+}

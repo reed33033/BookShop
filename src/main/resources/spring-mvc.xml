@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    1、mvc注解驱动-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+<!--2、配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/admin/"></property>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--    3、静态资源权限开放-->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+<!--    4、组件扫描- 扫描Controller-->
+  <context:component-scan base-package="com.mypack.controller"></context:component-scan>
+
+<!--&lt;!&ndash;    配置权限拦截器&ndash;&gt;-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--&lt;!&ndash;            配置对哪些资源执行拦截操作&ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--&lt;!&ndash;            配置哪些资源排除拦截操作&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/user/login"/>-->
+<!--            <bean class="com.mypack.interceptor.PrivilegeInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+
+    <!-- 开启对SpringMVC注解的支持 -->
+    <mvc:annotation-driven />
+
+    <!--
+        支持AOP的注解支持，AOP底层使用代理技术
+        JDK动态代理，要求必须有接口
+        cglib代理，生成子类对象，proxy-target-class="true" 默认使用cglib的方式
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!--转换器-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+
+        <!-- 配置自定义格式转换器-->
+        <property name="formatters">
+            <list>
+                <bean class="com.mypack.utils.DateFormatter">
+                    <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+                </bean>
+            </list>
+
+        </property>
+    </bean>
+
+    <bean class="com.mypack.service.InitDataListener"></bean>
+</beans>
