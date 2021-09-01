@@ -33,7 +33,7 @@ public class adminTest {
 
     @Test
     public void testCountBooksByCid(){
-        int i = booksDao.selectBooksCount("3");
+        int i = booksDao.countBooks();
         System.out.println(i);
     }
 }

@@ -21,4 +21,7 @@ public interface CateDao {
     @Delete(" <script>" +"delete from category where cid in <foreach collection='array' item='item' open='(' close=')' separator=',' >#{item}</foreach>"+"</script>")
     void deleteByCid(@Param("array") String[] array) throws Exception;
 
+    @Select("select count(*) from category")
+    int countCate();
+
 }

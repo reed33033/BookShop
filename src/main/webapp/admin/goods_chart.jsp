@@ -21,7 +21,7 @@
         }
     </style>
     <script type="text/javascript" src="<%=basePath %>js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="<%=basePath %>js/echarts.min.js"></script>
     <script type="text/javascript">
 
         // old write
@@ -70,7 +70,7 @@
             },
             legend: {
                 orient: 'vertical',
-                left: 'left',
+                left: 'left'
             },
             series : [
                 {

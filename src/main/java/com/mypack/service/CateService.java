@@ -15,8 +15,10 @@ public interface CateService {
 
     public Category findByCid(String cid);
 
-    void save(Category category) throws Exception;
+    public void save(Category category) throws Exception;
 
-    void deleteByCid(String[] cids) throws Exception ;
+    public void deleteByCid(String[] cids) throws Exception ;
+
+    int countCate();
 
 }

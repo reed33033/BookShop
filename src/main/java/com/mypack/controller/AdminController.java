@@ -1,5 +1,6 @@
 package com.mypack.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.mypack.domain.Books;
 import com.mypack.domain.Category;
@@ -195,19 +196,21 @@ private BooksService booksService;
     @RequestMapping("/showByCate")
     public ModelAndView showByCate(HttpSession session){
         List<EchartsBean> countByCate =new ArrayList<EchartsBean>();
-        List<Category> categoryList =new ArrayList<Category>();
+        List<Category> cateList = null;
         try {
-            categoryList = cateService.findAll();
+            cateList = cateService.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (Category category : categoryList) {
+
+        for (Category category : cateList) {
             int count = booksService.selectBooksCount(category.getCid());
             EchartsBean bean = new EchartsBean(category.getCname(), count);
             countByCate.add(bean);
         }
+        String json = JSONObject.toJSONString(countByCate);
         ModelAndView mv = new ModelAndView();
-        mv.addObject("eclist", countByCate);
+        mv.addObject("eclist", json);
         mv.setViewName("goods_chart");
         return mv;
     }

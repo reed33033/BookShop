@@ -16,11 +16,13 @@ import java.util.List;
 public class CateServiceImpl implements CateService {
     @Autowired
     private CateDao cateDao;
+
+    @Override
     public List<Category> findAll() throws Exception {
-        List<Category> cateList = cateDao.findAll();
-        return cateList;
+        return cateDao.findAll();
     }
 
+    @Override
     public List<Category> findAll(int page, int size) throws Exception {
         //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
         Page page1=PageHelper.startPage(page, size);
@@ -29,6 +31,7 @@ public class CateServiceImpl implements CateService {
         return cateDao.findAll();
     }
 
+    @Override
     public boolean updateOne(Category category) throws Exception {
         int row = cateDao.updateOne(category);
         if(row>0){
@@ -37,6 +40,7 @@ public class CateServiceImpl implements CateService {
         return false;
     }
 
+    @Override
     public  Category findByCid(String cid){
         Category cate = cateDao.findByCid(cid);
         return cate;
@@ -50,5 +54,10 @@ public class CateServiceImpl implements CateService {
     @Override
     public void deleteByCid(String[] cids) throws Exception {
         cateDao.deleteByCid(cids);
+    }
+
+    @Override
+    public int countCate() {
+        return cateDao.countCate();
     }
 }

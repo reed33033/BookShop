@@ -43,4 +43,7 @@ public interface BooksDao {
     @Delete(" <script>" +"delete from books where bid in <foreach collection='array' item='item' open='(' close=')' separator=',' >#{item}</foreach>"+"</script>")
     void deleteByBid(@Param("array") String[] array) throws Exception;
 
+    @Select("select count(*) from books")
+    int countBooks();
+
 }
