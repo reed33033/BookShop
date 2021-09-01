@@ -32,9 +32,12 @@ public interface BooksDao {
     int updateOne(Books books) throws Exception;
 
     @Select("select * from books where bid=#{bid}")
-    Books findByBCid(String bid);
+    Books findByBid(String bid);
 
-    @Insert("insert into books(bid,cid,bname,author,publish,isbn,words,price,description,full_description,pic,state,version,product_time) values(#{bid},#{cid},#{bname},#{author},#{publish},#{isbn},#{words},#{price},#{description},#{full_description},#{pic},#{state},#{version},#{product_time})")
+    @Select("select count(*) from books where cid=#{cid}")
+    int selectBooksCount(int cid);
+
+    @Insert("insert into books(bid,cid,bname,author,publish,isbn,words,price,description,full_description,pic,state,version,product_date) values(#{bid},#{cid},#{bname},#{author},#{publish},#{isbn},#{words},#{price},#{description},#{full_description},#{pic},#{state},#{version},#{product_date})")
     void save(Books books) throws Exception;
 
     @Delete(" <script>" +"delete from books where bid in <foreach collection='array' item='item' open='(' close=')' separator=',' >#{item}</foreach>"+"</script>")

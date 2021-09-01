@@ -34,14 +34,14 @@
 			ids += "," + $(this).val();
 		})
 		if (ids == "") {
-			alert("请先选择再删除吧小妞~");
+			alert("请先选择再删除吧");
 			return;
 		} else {
 			ids = ids.substring(1);
 		}
 		//将ids传入后台servlet
 		if (confirm("您确定要删除吗？")) {
-			window.location = "books?func=deleteBooks&ids=" + ids;
+			window.location = "booksDelete?bid=" + ids;
 		}
 	}
 
@@ -129,7 +129,7 @@ $(document).ready(function(){
 <%--				       		<fmt:formatDate value="${books.product_date }" pattern="yyyy-MM-dd HH:mm:ss" />--%>
 <%--				       	</td>--%>
 				       	<td>
-				       		<a style="color: green;" href="<%=basePath %>books?func=findBooksById&bid=${books.bid }">修改</a>
+				       		<a style="color: green;" href="${pageContext.request.contextPath}/admin/findByBid?bid=${books.bid}">修改</a>
 				       	</td>
 			        </tr>
 	        	</c:forEach>
@@ -175,7 +175,7 @@ $(document).ready(function(){
 			我们此时应该请求商品的servlet，来调用分类的service、dao来得到商品分类数据
 		*/
 		//window.location = "goods_add.jsp";
-		window.location = "<%=basePath %>books?func=findAllCate";
+		window.location = "goods_add.jsp";
 	}
 
 </script>

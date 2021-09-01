@@ -54,7 +54,7 @@ $(function(){
         <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAll" target="rightFrame">用户管理</a><i></i></li>
         <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllCate" target="rightFrame">商品类别管理</a><i></i></li>
         <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllBooks" target="rightFrame">商品管理</a><i></i></li>
-            <li><cite></cite><a href="<%=basePath %>books?func=showByCate" target="rightFrame">分类统计</a><i></i></li>
+            <li><cite></cite><a href="${pageContext.request.contextPath}/admin/showByCate" target="rightFrame">分类统计</a><i></i></li>
        
         
         <li><cite></cite><a href="<%=basePath %>orders?func=findAllOrders" target="rightFrame">订单管理</a><i></i></li>

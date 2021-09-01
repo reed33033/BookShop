@@ -24,14 +24,14 @@
     <div class="formbody">
    		<div class="formtitle"><span>商品信息</span></div>
    		<span style="color: red;">${msg }</span>
-	    <form action="books?func=insertBooks" method="post" enctype="multipart/form-data">
+	    <form action="${pageContext.request.contextPath}/admin/booksSave" method="post" enctype="multipart/form-data">
 		    <ul class="forminfo">
 		    	<!-- 商品分类信息 -->
 		    	<li>
 			    	<label>分类</label>
 			    	<select name="cid" class="dfinput">
 			    		<option value="0">===请选择===</option>
-			    		<c:forEach items="${cates }" var="cate">
+			    		<c:forEach items="${cateList }" var="cate">
 			    			<option value="${cate.cid }">${cate.cname }</option>
 			    		</c:forEach>
 			    	</select>
@@ -49,7 +49,7 @@
 			    	<textarea name="full_description" cols="10" rows="10" class="textinput" style="height: 80px"></textarea>
 			    </li>
 			    <li><label>封面</label>
-			    	<input name="pic" type="file"/>
+			    	<input name="img" type="file"/>
 			    </li>
 			    <li><label>商品小类别</label>
 				    <cite>

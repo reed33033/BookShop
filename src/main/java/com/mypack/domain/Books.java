@@ -1,5 +1,7 @@
 package com.mypack.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -15,6 +17,8 @@ public class Books {
        */
     private Category category;
 
+
+
     public Category getCategory() {
         return category;
     }
@@ -27,12 +31,13 @@ public class Books {
   private String publish;//出版社
   private String isbn;//ISBN
   private Integer words;//字数
-  private double price;//价格
+  private Double price;//价格
   private String description;//简介
   private String full_description;//内容描述
   private String pic;//图片
   private Integer state;//状态分类 0是正常 1是人气推荐
   private String version;//版本
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private Date product_date;//出版日期
 
 
@@ -151,21 +156,7 @@ public class Books {
     public Books() {
     }
 
-    public Books(Integer cid, String bname, String author, String publish, String isbn, Integer words, double price, String description, String full_description, String pic, Integer state, String version, Date product_date) {
-        this.cid = cid;
-        this.bname = bname;
-        this.author = author;
-        this.publish = publish;
-        this.isbn = isbn;
-        this.words = words;
-        this.price = price;
-        this.description = description;
-        this.full_description = full_description;
-        this.pic = pic;
-        this.state = state;
-        this.version = version;
-        this.product_date = product_date;
-    }
+
 
     public Books(Integer bid, Integer cid, String bname, String author, String publish, String isbn, Integer words, double price, String description, String full_description, String pic, Integer state, String version, Date product_date) {
         this.bid = bid;
@@ -183,6 +174,10 @@ public class Books {
         this.version = version;
         this.product_date = product_date;
     }
+
+
+
+
 
     public void setProductDate(Date product_date) {
         this.product_date = product_date;

@@ -1,5 +1,6 @@
 package com.mypack.test;
 
+import com.mypack.dao.BooksDao;
 import com.mypack.dao.UserDao;
 import com.mypack.domain.Category;
 import com.mypack.domain.User;
@@ -20,6 +21,9 @@ public class adminTest {
     private UserDao userDao;
 
     @Autowired
+    private BooksDao booksDao;
+
+    @Autowired
     private CateService cateService;
 
     @Test
@@ -38,5 +42,11 @@ public class adminTest {
         List<Category> all1 = cateService.findAll();
         System.out.println(all1);
 
+    }
+
+    @Test
+    public void testCountBooksByCid(){
+        int i = booksDao.selectBooksCount("3");
+        System.out.println(i);
     }
 }

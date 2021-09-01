@@ -36,8 +36,8 @@ public class BooksServiceImpl implements BooksService {
     }
 
     @Override
-    public Books findByBCid(String bid) {
-        return booksDao.findByBCid(bid);
+    public Books findByBid(String bid) {
+        return booksDao.findByBid(bid);
     }
 
     @Override
@@ -48,5 +48,9 @@ public class BooksServiceImpl implements BooksService {
     @Override
     public void deleteByBid(String[] array) throws Exception {
         booksDao.deleteByBid(array);
+    }
+
+    public int selectBooksCount(int cid) {
+        return booksDao.selectBooksCount(cid);
     }
 }

@@ -10,8 +10,8 @@ public interface BooksService {
     List<Books> findAll() throws Exception;
     public List<Books> findAll(int page, int size) throws Exception;
     int updateOne(Books books) throws Exception;
-    Books findByBCid(String bid);
+    Books findByBid(String bid);
     void save(Books books) throws Exception;
     void deleteByBid(String[] array) throws Exception;
-
+    int selectBooksCount(int cid);
 }

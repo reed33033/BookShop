@@ -24,7 +24,7 @@
     </div>
     <div class="formbody">
     	<div class="formtitle"><span>商品信息</span></div>
-	    <form action="<%=basePath %>books" method="post" enctype="multipart/form-data">
+	    <form action="${pageContext.request.contextPath}/books/update" method="post" enctype="multipart/form-data">
 	   		<!-- 修改的功能方法 -->
 	    	<input type="hidden" name="func" value="updateBooks" />
 	    	<!-- 修改的商品主键id -->
@@ -35,7 +35,7 @@
 		    		<label>分类</label>
 		    		<select name="cid" class="dfinput">
 		    			<option value="0">===请选择===</option>
-		    			<c:forEach items="${cates }" var="cate">
+		    			<c:forEach items="${cateList }" var="cate">
 		    				<option <c:if test="${books.cid == cate.cid }">selected</c:if> value="${cate.cid }">${cate.cname }</option>
 		    			</c:forEach>
 		    		</select>
@@ -53,11 +53,12 @@
 			    	<textarea name="full_description" cols="10" rows="10" class="textinput" style="height: 80px">${books.full_description }</textarea>
 			    </li>
 			    <li><label>封面</label>
-			    	<input name="pic" type="file"/><font style="color: red">${msg }</font>
+			    	<input name="img" type="file" value="${books.pic }"/><font style="color: red">${msg }</font>
+
 			    	<!-- 显示当前的商品图片 -->
 			    	<img src="<%=imgPath %>${books.pic }" width="80" height="80" />
 			    	<!-- 将之前的图片名称存放在隐藏域中，不显示，但是后台可以接收 -->
-			    	<input type="hidden" name="oldPic" value="${books.pic }" />
+			    	<input type="hidden" name="pic" value="${books.pic }" />
 			    </li>
 			    <li><label>商品小类别</label>
 				    <cite>

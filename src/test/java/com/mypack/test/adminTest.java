@@ -1,5 +1,6 @@
 package com.mypack.test;
 
+import com.mypack.dao.BooksDao;
 import com.mypack.dao.UserDao;
 import com.mypack.domain.User;
 import com.mypack.service.UserService;
@@ -15,6 +16,9 @@ public class adminTest {
     private UserService userService;
 
     @Autowired
+    private BooksDao booksDao;
+
+    @Autowired
     private UserDao userDao;
 
     @Test
@@ -25,5 +29,11 @@ public class adminTest {
 //        List<User> all = userService.findAll();
 //        System.out.println(all);
 
+    }
+
+    @Test
+    public void testCountBooksByCid(){
+        int i = booksDao.selectBooksCount("3");
+        System.out.println(i);
     }
 }
