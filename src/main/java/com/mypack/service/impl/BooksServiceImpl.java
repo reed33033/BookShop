@@ -16,6 +16,7 @@ import java.util.List;
 public class BooksServiceImpl implements BooksService {
     @Autowired
     private BooksDao booksDao;
+
     @Override
     public List<Books> findAll() throws Exception {
 
@@ -53,5 +54,38 @@ public class BooksServiceImpl implements BooksService {
 
     public int selectBooksCount(int cid) {
         return booksDao.selectBooksCount(cid);
+    }
+
+    @Override
+    public List<Books> findBooksByCid(String cid, int page, int size) throws Exception {
+        //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
+        Page page1= PageHelper.startPage(page, size);
+        int total = (int) page1.getTotal();
+        page1.setTotal(total);
+        return booksDao.findBooksByCid(cid);
+    }
+
+    @Override
+    public Books findBooksByIsbn(String isbn) throws Exception {
+        Books booksByIsbn = booksDao.findBooksByIsbn(isbn);
+        return booksByIsbn;
+    }
+
+    @Override
+    public List<Books> findBooksByBname(String bname, int page, int size) {
+        //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
+        Page page1= PageHelper.startPage(page, size);
+        int total = (int) page1.getTotal();
+        page1.setTotal(total);
+        return booksDao.findBooksByBname(bname);
+    }
+
+    @Override
+    public List<Books> findBooksByState(int state, int page, int size) {
+        //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
+        Page page1= PageHelper.startPage(page, size);
+        int total = (int) page1.getTotal();
+        page1.setTotal(total);
+        return booksDao.findBooksByState(state);
     }
 }

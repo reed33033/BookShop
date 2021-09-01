@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,6 +45,38 @@ public class BooksController {
         mv.addObject("booksPageInfo", booksPageInfo);
         mv.setViewName("goods_list");
         return mv;
+    }
+
+
+    //查询指定id的用户
+    @RequestMapping("/findBooks")
+    public String findBooks(String info,String option,HttpSession session, @RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "4") Integer size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<Books> booksList=new ArrayList<Books>();
+        if(option.equals("cid")){
+            booksList = booksService.findBooksByCid(info,page,size);
+        }else if(option.equals("bookname")){
+            booksList=booksService.findBooksByBname(info,page,size);
+        }else if(option.equals("ISBN")){
+            Books booksByIsbn = booksService.findBooksByIsbn(info.trim().toString());
+            if(booksByIsbn!=null) {
+                booksList.add(booksByIsbn);
+            }
+        }
+
+        PageInfo searchBooks = new PageInfo(booksList);
+        session.setAttribute("searchBooks",searchBooks);
+        session.setAttribute("option",option);
+        session.setAttribute("info",info);
+        return "redirect:/search.jsp";
+    }
+
+    //查询指定id的用户
+    @RequestMapping("/findBooksBybid")
+    public String findBooksBybid(String bid,HttpSession session){
+        Books byBid = booksService.findByBid(bid);
+        session.setAttribute("buyBook",byBid);
+        return "redirect:/buy.jsp";
     }
 
 

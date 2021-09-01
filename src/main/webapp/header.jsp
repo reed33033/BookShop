@@ -36,7 +36,7 @@
 							</c:if>
 							<c:if test="${user!=null}">
 								${user.username}，欢迎您来此购书！
-								[<a href="${ctxPath }/user?func=userLogout" class="login_link">安全退出</a>]
+								[<a href="${pageContext.request.contextPath}/user/logout" class="login_link">安全退出</a>]
 							</c:if>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 			<a href="${ctxPath}/index.jsp" title="回到首页"><img src="${ctxPath }/images/logo.png" height="80px"/></a>
 		</div>
 		<div class="col-xs-6">
-			<form action="${ctxPath}/books?func=findBookByInfo"  method="post">
+			<form action="${pageContext.request.contextPath}/books/findBooks"  method="post">
 			<!-- 搜索图书 -->
 			<div class="input-group" id="search">
 				<input type="text" class="form-control" name="info" placeholder="书名、ISBN..."/>

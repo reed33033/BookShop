@@ -57,7 +57,7 @@ $(function(){
             <li><cite></cite><a href="${pageContext.request.contextPath}/admin/showByCate" target="rightFrame">分类统计</a><i></i></li>
        
         
-        <li><cite></cite><a href="<%=basePath %>orders?func=findAllOrders" target="rightFrame">订单管理</a><i></i></li>
+        <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllOrders" target="rightFrame">订单管理</a><i></i></li>
 <%--        <li><cite></cite><a href="tools.jsp" target="rightFrame">支付信息管理</a><i></i></li>--%>
 <%--        <li><cite></cite><a href="filelist.jsp" target="rightFrame">收货地址管理</a><i></i></li>--%>
 <%--        <li><cite></cite><a href="tab.jsp" target="rightFrame">退货/返货</a><i></i></li>--%>

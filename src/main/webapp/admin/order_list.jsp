@@ -86,7 +86,7 @@ $(document).ready(function(){
 	        </tr>
 	    </thead>
         <tbody>
-        	<c:forEach items="${orders }" var="orders" varStatus="i">
+        	<c:forEach items="${ordersPageInfo.list }" var="orders" varStatus="i">
         		<tr style="text-align: center;">
 			        <td><input class="one" name="" type="checkbox" value="${orders.orders_number }" /></td>
 					<td>${orders.orders_number }</td>
@@ -105,15 +105,15 @@ $(document).ready(function(){
    
     <div class="pagin">
     	<div class="message">
-    		共<i class="blue">${pageTool.totalCount }</i>条记录，
-    		当前显示第&nbsp;<i class="blue">${pageTool.currentPage }&nbsp;</i>页
-    		总共&nbsp;<i class="blue">${pageTool.pageSize }&nbsp;</i>页
+			共<i class="blue">${ordersPageInfo.total }</i>条记录,
+			当前显示第&nbsp;<i class="blue">${ordersPageInfo.pageNum}&nbsp;</i>页
+			总共&nbsp;<i class="blue">${ordersPageInfo.pages}&nbsp;</i>页
     	</div>
         <ul class="paginList">
-	         <li class="paginItem"><a href="<%=basePath%>orders?func=findAllOrders&currentPage=1">首页</a></li>
-	         <li class="paginItem"><a href="<%=basePath%>orders?func=findAllOrders&currentPage=${pageTool.lastPage }">上一页</a></li>
-	         <li class="paginItem"><a href="<%=basePath%>orders?func=findAllOrders&currentPage=${pageTool.nextPage }">下一页</a></li>
-	         <li class="paginItem"><a href="<%=basePath%>orders?func=findAllOrders&currentPage=${pageTool.pageSize }">尾页</a></li>
+			<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllOrders?page=1&size=${ordersPageInfo.pageSize}">首页</a></li>
+			<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllOrders?page=${ordersPageInfo.pageNum-1}&size=${ordersPageInfo.pageSize}">上一页</a></li>
+			<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllOrders?page=${ordersPageInfo.pageNum+1}&size=${ordersPageInfo.pageSize}">下一页</a></li>
+			<li class="paginItem"><a href="${pageContext.request.contextPath}/admin/findAllOrders?page=${ordersPageInfo.pages}&size=${ordersPageInfo.pageSize}">尾页</a></li>
         </ul>
     </div>
     
@@ -159,7 +159,7 @@ $(document).ready(function(){
 		}
 		//将ids传入后台servlet
 		if (confirm("您确定要删除吗？")) {
-			window.location = "user?func=deleteUser&ids=" + ids;
+			window.location = "ordersDelete?oid=" + ids;
 		}
 	}
 	

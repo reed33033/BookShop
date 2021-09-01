@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserService {
     public User adminLogin(String username, String password);
 
+    public User userLogin(String username, String password);
+
     List<User> findAll() throws Exception;
 
     List<User> findAll(int page,int size) throws Exception;
@@ -19,4 +21,10 @@ public interface UserService {
     User findByUid(String uid);
 
     void deleteByUid(String[] uids) throws Exception ;
+
+    User findByPhone(String phone);
+
+    User findByUserName(String username);
+
+    int save(User user) throws Exception;
 }

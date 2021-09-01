@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public User userLogin(String username, String password) {
+        return userDao.findByUsernameAndPassword(username,password);
+    }
+
     public List<User> findAll() throws Exception {
         List<User> userList = userDao.findAll();
         return userList;
@@ -53,5 +58,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteByUid(String[] uids) throws Exception {
         userDao.deleteByUid(uids);
+    }
+
+    @Override
+    public User findByPhone(String phone) {
+        return userDao.findByPhone(phone);
+    }
+
+    @Override
+    public User findByUserName(String username) {
+        return userDao.findByUserName(username);
+    }
+
+    @Override
+    public int save(User user) throws Exception {
+        return userDao.save(user);
     }
 }

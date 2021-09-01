@@ -13,14 +13,14 @@
 <!-- container -->
 <div id="rgbar">
     <p>用户注册／<small>Register</small></p>
-    <form action="${ctxPath }/user?func=registUser" method="post" onsubmit="return check_Rg_Submit()">
+    <form action="${pageContext.request.contextPath}/user/registUser" method="post" onsubmit="return check_Rg_Submit()">
         <ul class="rgul">
             <div class="alert alert-warning" role="alert" id="msg">
                 ${MSG_USER_REGISTER_RESULT}
             </div>
             <li>
                 <span>用户名</span>
-                <input class="form-control" type="text" id="loginId" name="loginId" placeholder="用户名*"
+                <input class="form-control" type="text" id="loginId" name="username" placeholder="用户名*"
                        onblur="check_Rg_LoginId(this)"/>
                 <small id="rg_LoginId_state"></small>
             </li>
@@ -29,7 +29,7 @@
             <li class="tips collapse" id="rg_LoginId"><span></span><code>用户已存在</code></li>
             <li>
                 <span>用户密码</span>
-                <input class="form-control" type="password" name="loginPwd" placeholder="用户密码*"
+                <input class="form-control" type="password" name="password" placeholder="用户密码*"
                        onblur="check_Rg_LoginPwd(this)"/>
                 <small id="rg_LoginPwd_state"></small>
             </li>
@@ -46,7 +46,7 @@
             </li>
             <li>
                 <span>真实姓名</span>
-                <input class="form-control" type="text" name="name" placeholder="姓名" onblur="check_Rg_Name(this)"/>
+                <input class="form-control" type="text" name="uname" placeholder="姓名" onblur="check_Rg_Name(this)"/>
                 <small id="rg_Name_state"></small>
             </li>
             <li class="tips collapse" id="rg_Name_Tips"><span></span><code>请输入合法的中文姓名</code></li>
@@ -70,7 +70,7 @@
             <li class="tips collapse" id="rg_Phone"><span></span><code>手机号已注册</code></li>
             <li>
                 <span>联系地址</span>
-                <input class="form-control" type="text" name="address" placeholder="联系地址*"
+                <input class="form-control" type="text" name="area" placeholder="联系地址*"
                        onblur="check_Rg_Address(this)"/>
                 <small id="rg_Address_state"></small>
             </li>
@@ -121,7 +121,7 @@
 
             $.ajax({
                 type: 'get',
-                url: '${ctxPath }/user?func=checkUsername',
+                url: '${pageContext.request.contextPath}/user/findByUsername',
                 data: {username: loginId},
                 dataType: 'json',
                 success: function (isRegist) {
@@ -153,7 +153,7 @@
         }else{
             $.ajax({
                 type: 'get',
-                url: '${ctxPath }/user?func=checkPhone',
+                url: '${pageContext.request.contextPath}/user/findByPhone',
                 data: {phone: phone},
                 dataType: 'json',
                 success: function (isRegist) {

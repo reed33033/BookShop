@@ -2,12 +2,15 @@ package com.mypack.test;
 
 import com.mypack.dao.BooksDao;
 import com.mypack.dao.UserDao;
+import com.mypack.domain.Books;
 import com.mypack.domain.Category;
 import com.mypack.domain.User;
 import com.mypack.service.CateService;
 import com.mypack.service.UserService;
-import org.junit.Test;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.TestExecutionListeners;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -48,5 +51,12 @@ public class adminTest {
     public void testCountBooksByCid(){
         int i = booksDao.countBooks();
         System.out.println(i);
+    }
+
+    @Test
+    public void tetsBooksByIsbn() throws Exception {
+        String isbn="9787115145543";
+        Books booksByIsbn = booksDao.findBooksByIsbn(isbn);
+        System.out.println(booksByIsbn);
     }
 }

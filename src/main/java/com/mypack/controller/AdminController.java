@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.mypack.domain.Books;
 import com.mypack.domain.Category;
+import com.mypack.domain.Orders;
 import com.mypack.domain.User;
 import com.mypack.service.BooksService;
 import com.mypack.service.CateService;
+import com.mypack.service.OrdersService;
 import com.mypack.service.UserService;
 
 
@@ -37,6 +39,9 @@ private CateService cateService;
 @Autowired
 private BooksService booksService;
 
+@Autowired
+private OrdersService ordersService;
+
     @RequestMapping(value = "/adminLogin",method = {RequestMethod.POST})
     public String login(String username, String password, HttpSession session){
         User user=userService.adminLogin(username,password);
@@ -51,6 +56,8 @@ private BooksService booksService;
         }
 
     }
+
+
 
 
     @RequestMapping("/findAll")
@@ -212,6 +219,30 @@ private BooksService booksService;
         ModelAndView mv = new ModelAndView();
         mv.addObject("eclist", json);
         mv.setViewName("goods_chart");
+        return mv;
+    }
+
+    @RequestMapping("/findAllOrders")
+    public ModelAndView findAllOrders(@RequestParam(name = "page", required = true, defaultValue = "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "4") Integer size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        List<Orders> ordersList = ordersService.findAll(page,size);
+        //PageInfo就是一个分页Bean
+        PageInfo ordersPageInfo = new PageInfo(ordersList);
+        mv.addObject("ordersPageInfo", ordersPageInfo);
+        mv.setViewName("order_list");
+        return mv;
+    }
+
+    @RequestMapping(value = "/ordersDelete")
+    public ModelAndView ordersDelete(String oid,HttpSession session) throws Exception {
+        String[] oids=oid.split(",");
+        ordersService.deleteByOid(oids);
+        ModelAndView mv = new ModelAndView();
+        List<Orders> ordersList = ordersService.findAll(1,4);
+        //PageInfo就是一个分页Bean
+        PageInfo ordersPageInfo = new PageInfo(ordersList);
+        mv.addObject("ordersPageInfo", ordersPageInfo);
+        mv.setViewName("order_list");
         return mv;
     }
 }

@@ -30,7 +30,7 @@
 			<ul class="cateul">
 				<li class="catehead">图书分类</li>
 				<c:forEach items="${cateList}" var="c">
-					<li><a href="<%=basePath %>books?func=findBookByInfo&option=cid&info=${c.cid }">${c.cname}</a></li>
+					<li><a href="${pageContext.request.contextPath}/books/findBooks?info=${c.cid}&option=cid">${c.cname}</a></li>
 				</c:forEach>
 			</ul>
 			
@@ -59,8 +59,8 @@
 					<div class="goodsbar-content">
 						<c:forEach var="book" items="${hotBList }" begin="0" end="3">
 							<dl class="bookBlock">
-								<dd class="img"><a href="<%=basePath %>books?func=buyBook&bid=${book.bid}"><img  width="125px" height="150px" src="${book.pic}" class="" /></a></dd>
-								<dt><a href="<%=basePath %>books?func=buyBook&bid=${book.bid}">${book.bname}</a></dt>
+								<dd class="img"><a href="${pageContext.request.contextPath}/books/findBooksBybid?bid=${book.bid}"><img  width="125px" height="150px" src="${book.pic}" class="" /></a></dd>
+								<dt><a href="${pageContext.request.contextPath}/books/findBooksBybid?bid=${book.bid}">${book.bname}</a></dt>
 								<dd class="price">单价:￥<span class="unitprice">${book.price}</span>
 <%--									<span class="pull-right">浏览&nbsp;${book.clicks}</span></dd>--%>
 							</dl>

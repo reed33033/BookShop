@@ -29,39 +29,6 @@
 							<li class="title">${buyBook.bname }</li>
 							<li class="" style="font-size:14px;">作者:${buyBook.author}</li>
 							<li class="price">￥${buyBook.price}</li>
-<%--							<li class="number">--%>
-<%--								<p class=" pull-left" style="line-height: 35px;font-size:14px;">数量&nbsp;</p>--%>
-<%--								<div class="input-group input-group-sm" style="width:100px;">--%>
-<%--									<a href=" javascript:void(0);" onclick="deAmount()" class="input-group-addon"  style="text-decoration: none;">-</a>--%>
-<%--									<input id="num" name="num" type="text" value="1" class="form-control input-sm text-center"/>--%>
-<%--									<a href=" javascript:void(0);" onclick="inAmount()" class="input-group-addon" style="text-decoration: none;">+</a>--%>
-<%--								</div>--%>
-<%--								<!-- 数量增减 -->--%>
-<%--								<script type="text/javascript">--%>
-<%--									//加--%>
-<%--									function inAmount(){--%>
-<%--										var num = $("#num").val();--%>
-<%--										var re = /^[0-9]*[1-9][0-9]*$/;--%>
-<%--										if(re.exec(num)){--%>
-<%--											num++;--%>
-<%--										}else{--%>
-<%--											num=1;--%>
-<%--										}--%>
-<%--										$("#num").val(num);--%>
-<%--									}--%>
-<%--									//减--%>
-<%--									function deAmount(){--%>
-<%--										var num = $("#num").val();--%>
-<%--										var re = /^[0-9]*[1-9][0-9]*$/;--%>
-<%--										if(re.exec(num) && num>1){--%>
-<%--											num--;--%>
-<%--										}else{--%>
-<%--											num=1;--%>
-<%--										}--%>
-<%--										$("#num").val(num);--%>
-<%--									}--%>
-<%--								</script>--%>
-<%--							</li>--%>
 							<li><br><button type="submit" class="btn btn-danger">加入购物车</button> </li>
 						</ul>
 						</form>

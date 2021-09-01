@@ -1,5 +1,6 @@
 package com.mypack.service;
 
+import com.mypack.domain.Books;
 import com.mypack.domain.Category;
 import com.mypack.domain.User;
 import com.mypack.service.CateService;
@@ -23,6 +24,9 @@ public class InitDataListener implements InitializingBean, ServletContextAware {
     @Resource
     private CateService cateService;
 
+    @Resource
+    private BooksService booksService;
+
     public void afterPropertiesSet() throws Exception {
 
 
@@ -30,12 +34,16 @@ public class InitDataListener implements InitializingBean, ServletContextAware {
 
     public void setServletContext(ServletContext servletContext) {
         List<Category> cateList = null;
+        List<Books> booksByState=null;
         try {
             cateList = cateService.findAll();
+            booksByState = booksService.findBooksByState(1, 1, 4);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         servletContext.setAttribute("cateList",cateList);
+        servletContext.setAttribute("hotBList",booksByState);
         System.out.println(cateList);
     }
 }

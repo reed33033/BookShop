@@ -46,4 +46,15 @@ public interface BooksDao {
     @Select("select count(*) from books")
     int countBooks();
 
+    @Select("select * from books where cid=#{cid}")
+    List<Books> findBooksByCid(String cid) throws Exception;
+
+    @Select("select * from books where isbn=#{isbn}")
+    Books findBooksByIsbn(String isbn) throws Exception;
+
+    @Select("select * from books where bname like CONCAT('%',#{bname},'%')")
+    List<Books> findBooksByBname(String bname);
+
+    @Select("select * from books where state=#{state}")
+    List<Books> findBooksByState(int state);
 }
