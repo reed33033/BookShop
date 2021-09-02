@@ -93,7 +93,8 @@ $(document).ready(function(){
 			        <td>${orders.user.username }</td>
 			        <td>${orders.sumPrice }</td>
 			        <td>${orders.goodsCount }</td>
-			        <td>${orders.create_time }</td>
+			        <td>
+						<fmt:formatDate value="${orders.create_time }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					<td>
 						<c:if test="${orders.state == 0 }">未支付</c:if>
 						<c:if test="${orders.state == 1 }"><span style="color: green;">已支付</span></c:if>

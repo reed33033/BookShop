@@ -41,14 +41,14 @@ $(function(){
             
     <div class="topright">    
     <ul>
-    <li><a href="#">${user.uname }</a></li>
+    <li><a href="#">${admin.uname }</a></li>
     <li><span><img src="images/help.png" title="帮助"  class="helpimg"/></span><a href="#">帮助</a></li>
     <li><a href="#">关于</a></li>
     <li><a href="${pageContext.request.contextPath}/admin/logout" target="_parent">退出</a></li>
     </ul>
      
     <div class="user">
-    <span>${user.username }</span>
+    <span>${admin.username }</span>
     <i>消息</i>
     <b>0</b>
     </div>    

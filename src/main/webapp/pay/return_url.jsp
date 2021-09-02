@@ -14,7 +14,7 @@
 	//获取项目名
 	String path = request.getContextPath();
 	//获取tomcat 协议+地址+端口号+ 获取项目名
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
 %>
 <%
 /* *
@@ -49,6 +49,10 @@
 
 	String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
 
+	response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
+
+	System.out.println(basePath+"tfgvhbj");
+
 	//——请在这里编写您的程序（以下代码仅作参考）——
 	if(signVerified) {
 		//商户订单号
@@ -62,13 +66,18 @@
 		
 		out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 
+
 		//修改订单的状态，改为已支付、待发货
-		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
+
 	}else {
+
 		out.println("验签失败");
 
-		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
+
 	}
+
+
+
 	//——请在这里编写您的程序（以上代码仅作参考）——
 %>
 <body>

@@ -47,7 +47,7 @@ private OrdersService ordersService;
         User user=userService.adminLogin(username,password);
         if(user!=null){
             //登录成功 将user存储到session
-            session.setAttribute("user",user);
+            session.setAttribute("admin",user);
             session.setAttribute("msg","");
             return "redirect:/admin/main.jsp";
         }else{
@@ -85,7 +85,7 @@ private OrdersService ordersService;
 
     @RequestMapping("/logout")
     public String logout(HttpSession session){
-        session.removeAttribute("user");
+        session.removeAttribute("admin");
         return "login";
     }
 

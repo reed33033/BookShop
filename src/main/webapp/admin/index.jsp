@@ -24,7 +24,7 @@
     
     <div class="welinfo">
     <span><img src="images/sun.png" alt="天气" /></span>
-    <b>${user.uname } 您好，欢迎使用信息管理系统</b>
+    <b>${admin.uname } 您好，欢迎使用信息管理系统</b>
 <%--    <a href="#">帐号设置</a>--%>
 <%--    </div>--%>
 <%--    --%>
@@ -50,5 +50,6 @@
     
     
     </div>
-</body>
+    </div>
+ </body>
 </html>

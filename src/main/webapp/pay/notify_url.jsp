@@ -6,6 +6,12 @@
 <%@ page import="com.alipay.api.internal.util.*"%>
 <%@ page import="com.alipay.config.AlipayConfig" %>
 <%
+	//获取项目名
+	String path = request.getContextPath();
+	//获取tomcat 协议+地址+端口号+ 获取项目名
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
+%>
+<%
 /* *
  * 功能：支付宝服务器异步通知页面
  * 日期：2017-03-30
@@ -56,6 +62,7 @@
 	
 		//交易状态
 		String trade_status = new String(request.getParameter("trade_status").getBytes("UTF-8"),"UTF-8");
+		System.out.println(out_trade_no);
 		
 		if(trade_status.equals("TRADE_FINISHED")){
 			//判断该笔订单是否在商户网站中已经做过处理
@@ -64,6 +71,7 @@
 				
 			//注意：
 			//退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
+			response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 		}else if (trade_status.equals("TRADE_SUCCESS")){
 			//判断该笔订单是否在商户网站中已经做过处理
 			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
@@ -74,7 +82,6 @@
 		}
 		
 		out.println("success");
-		
 	}else {//验证失败
 		out.println("fail");
 	
@@ -84,5 +91,6 @@
 	}
 	
 	//——请在这里编写您的程序（以上代码仅作参考）——
-	
+
+
 %>

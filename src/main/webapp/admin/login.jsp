@@ -9,11 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>欢迎登录后台管理系统</title>
-<link href="<%=basePath %>admin/css/style.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" src="<%=basePath %>admin/js/jquery.js"></script>
-<script src="<%=basePath %>admin/js/cloud.js" type="text/javascript"></script>
+<link href="${pageContext.request.contextPath}/admin/css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="${pageContext.request.contextPath}/admin/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/cloud.js" type="text/javascript"></script>
 
-<script language="javascript">
+<script language="javascript" type="text/javascript">
 	$(function(){
     $('.loginbox').css({'position':'absolute','left':($(window).width()-692)/2});
 	$(window).resize(function(){  

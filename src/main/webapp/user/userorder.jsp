@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
+<!-- 引入jstl的格式化库fmt -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,7 +40,7 @@
 <%--						<td>${o.trolleys.books.bname }</td>--%>
 						<td>${o.goodsCount }</td>
 						<td>￥${o.sumPrice}</td>
-						<td>${o.create_time}</td>
+						<td><fmt:formatDate value="${o.create_time }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					</tr>
 				</c:forEach>
 				</c:if>

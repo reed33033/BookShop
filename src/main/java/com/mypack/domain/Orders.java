@@ -1,5 +1,7 @@
 package com.mypack.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Orders {
 	private Double sumPrice;//订单总价
 	private String ordersName;//订单名称
 	private Integer goodsCount;//商品件数
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date create_time;//订单的生成日期
 	
 	//0未支付		1代发货(已支付)		2已发货		3运输中		4已签收

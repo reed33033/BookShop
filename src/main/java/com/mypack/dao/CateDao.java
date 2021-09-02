@@ -1,6 +1,8 @@
 package com.mypack.dao;
 
+import com.mypack.domain.Books;
 import com.mypack.domain.Category;
+import com.mypack.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -13,6 +15,15 @@ public interface CateDao {
     int updateOne(Category category) throws Exception;
 
     @Select("select * from category where cid=#{cid}")
+    @Results({
+            @Result(id = true, property = "cid", column = "cid"),
+            @Result(property = "cname", column = "cname"),
+            @Result(property = "state", column = "state"),
+            @Result(property = "number", column = "number"),
+            @Result(property = "order_number", column = "order_number"),
+            @Result(property = "description", column = "description"),
+            @Result(property = "create_time", column = "create_time")
+    })
     Category findByCid(String cid);
 
     @Insert("insert into category(cid,cname,state,order_number,description,create_time) values(#{cid},#{cname},#{state},#{order_number},#{description},#{create_time})")

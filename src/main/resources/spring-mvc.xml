@@ -35,6 +35,25 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <!--    </mvc:interceptors>-->
 
 
+    <!--    配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--            配置对哪些资源执行拦截操作-->
+            <mvc:mapping path="/admin"/>
+            <mvc:mapping path="/admin/*"/>
+            <!--            配置哪些资源排除拦截操作-->
+            <mvc:exclude-mapping path="/admin/login.jsp"/>
+            <mvc:exclude-mapping path="/admin/adminLogin"/>
+            <mvc:exclude-mapping path="/admin/css/**"/>
+            <mvc:exclude-mapping path="/admin/images/**"/>
+            <mvc:exclude-mapping path="/admin/js/**"/>
+            <mvc:exclude-mapping path="/admin/editor/**"/>
+            <mvc:exclude-mapping path="*.js"/>
+            <mvc:exclude-mapping path="*.css"/>
+            <bean class="com.mypack.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
     <!-- 开启对SpringMVC注解的支持 -->
     <mvc:annotation-driven />

@@ -7,7 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>付款</title>
 </head>
-
+<%
+	//获取项目名
+	String path = request.getContextPath();
+	//获取tomcat 协议+地址+端口号+ 获取项目名
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/";
+%>
 <%
 	//获得初始化的AlipayClient
 	AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
@@ -40,12 +45,14 @@
 	//		+ "\"timeout_express\":\"10m\"," 
 	//		+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 	//请求参数可查阅【电脑网站支付的API文档-alipay.trade.page.pay-请求参数】章节
-	
+
+
 	//请求
 	String result = alipayClient.pageExecute(alipayRequest).getBody();
 	
 	//输出
 	out.println(result);
+
 %>
 <body>
 </body>

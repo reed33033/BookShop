@@ -49,6 +49,7 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public void save(Orders orders) throws Exception {
+        orders.setState(0);
         ordersDao.save(orders);
     }
 }
