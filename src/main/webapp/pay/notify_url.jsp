@@ -2,9 +2,9 @@
 	pageEncoding="utf-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.Map"%>
-<%@ page import="com.alipay.config.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.alipay.api.internal.util.*"%>
+<%@ page import="com.alipay.config.AlipayConfig" %>
 <%
 /* *
  * 功能：支付宝服务器异步通知页面
@@ -33,7 +33,7 @@
 					: valueStr + values[i] + ",";
 		}
 		//乱码解决，这段代码在出现乱码时使用
-		valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+		valueStr = new String(valueStr.getBytes("UTF-8"), "utf-8");
 		params.put(name, valueStr);
 	}
 	
@@ -49,13 +49,13 @@
 	*/
 	if(signVerified) {//验证成功
 		//商户订单号
-		String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+		String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
 	
 		//支付宝交易号
-		String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
+		String trade_no = new String(request.getParameter("trade_no").getBytes("UTF-8"),"UTF-8");
 	
 		//交易状态
-		String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"),"UTF-8");
+		String trade_status = new String(request.getParameter("trade_status").getBytes("UTF-8"),"UTF-8");
 		
 		if(trade_status.equals("TRADE_FINISHED")){
 			//判断该笔订单是否在商户网站中已经做过处理

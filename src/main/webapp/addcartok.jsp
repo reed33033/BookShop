@@ -24,7 +24,7 @@
 			<br><br><br><br><br>
 			<span style="color:#7abd54;font-size:2em;">
 				<i class="fa fa-check fa-2x" style="color:#7abd54;"></i>商品已成功加入购物车！
-				<a href="${ctxPath }/trolley?func=findAllTrolley" class="btn btn-danger">去购物车结算</a>
+				<a href="${pageContext.request.contextPath}/trolley/findAllTrolley?uid=${user.uid}" class="btn btn-danger">去购物车结算</a>
 				<br>
 				<span>你还可以<a href="${ctxPath }/index.jsp">继续选购</a></span>
 			</span>			

@@ -55,6 +55,12 @@ public interface UserDao {
     @Update("update user set manager=#{manager} where uid=#{uid}")
     int updateManager(@Param("uid") String uid,@Param("manager") Integer manager);
 
+    @Update("update user set password=#{password} where uid=#{uid}")
+    int updatePassword(@Param("password")String password,@Param("uid")String uid);
+
+    @Update("update user set area=#{area} where uid=#{uid}")
+    int updateArea(@Param("area")String area,@Param("uid")String uid);
+
     @Delete(" <script>" +"delete from user where uid in <foreach collection='array' item='item' open='(' close=')' separator=',' >#{item}</foreach>"+"</script>")
     int deleteByUid(@Param("array") String[] array) throws Exception;
 

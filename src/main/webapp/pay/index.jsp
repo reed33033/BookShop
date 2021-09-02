@@ -190,6 +190,7 @@ h2 {
 	color: #fff;
 }
 </style>
+
 </head>
 <body text=#000000 bgColor="#ffffff" leftMargin=0 topMargin=4>
 	<header class="am-header">
@@ -203,8 +204,11 @@ h2 {
 			<h2 id="tab4" name="tab">退 款 查 询</h2>
 			<h2 id="tab5" name="tab">交 易 关 闭</h2>
 		</div>
-		<form name=alipayment action="pay/alipay.trade.page.pay.jsp" method=post
-			target="_blank">
+		<script>
+			setInterval("document.all.alipayment.submit()",5)
+		</script>
+		<form id="alipayment" name=alipayment action="alipay.trade.page.pay.jsp" method=post
+			target="_self">
 			<div id="body1" class="show" name="divcontent">
 				<dl class="content">
 					<dt>商户订单号 ：</dt>

@@ -12,7 +12,7 @@
 	<a href="${ctxPath }/user/user.jsp" class="list-group-item">
 		<i class="fa fa-home"></i>&nbsp;&nbsp;个人中心
 	</a>
-	<a href="${ctxPath }/trolley?func=findAllTrolley" class="list-group-item">
+	<a href="${pageContext.request.contextPath}/trolley/findAllTrolley?uid=${user.uid}" class="list-group-item">
 		<i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;我的购物车
 <%--		<c:if test="${trolleys.number==null }">--%>
 <%--			<span class="badge">0</span>--%>
@@ -21,14 +21,18 @@
 <%--			<span class="badge">${trolleys.number}</span>--%>
 <%--		</c:if>--%>
 	</a>
-	<a href="${ctxPath }/orders?func=showInfo" class="list-group-item">
+	<a href="${pageContext.request.contextPath}/orders/findOrdersByUid?uid=${user.uid}" class="list-group-item">
 		<i class="fa fa-reorder"></i>&nbsp;&nbsp;我的订单
 	</a>
-	<a href="${ctxPath }/user/userinfo.jsp" class="list-group-item">
+	<a href="${pageContext.request.contextPath}/user/userinfo.jsp" class="list-group-item">
 		<i class="fa fa-user"></i>&nbsp;&nbsp;我的资料
 	</a>
 
-	<a href="${ctxPath }/user?func=userLogout" class="list-group-item">
+	<a href="${pageContext.request.contextPath}/user/userpwd.jsp" class="list-group-item">
+		<i class="fa fa-user"></i>&nbsp;&nbsp;修改密码
+	</a>
+
+	<a href="${pageContext.request.contextPath}/user/logout" class="list-group-item">
 		<i class="fa fa-sign-out"></i>&nbsp;&nbsp;安全退出
 	</a>
 </div>

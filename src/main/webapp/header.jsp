@@ -17,13 +17,13 @@
 			<!--右边列表-->
 			<ul class="list_1" style="width: 216px;">
 				<li>
-					<a href="${ctxPath }/user/user.jsp">我的账户</a>
+					<a href="${pageContext.request.contextPath}/user/userInfo">我的账户</a>
 				</li>
 				<li>
-					<a href="${ctxPath }/orders?func=showInfo">我的订单</a>
+					<a href="${pageContext.request.contextPath}/orders/findOrdersByUid?uid=${user.uid}">我的订单</a>
 				</li>
 				<li>
-					<a href="${ctxPath }/trolley?func=findAllTrolley">我的购物车</a>
+					<a href="${pageContext.request.contextPath}/trolley/findAllTrolley?uid=${user.uid}">我的购物车</a>
 				</li>
 
 			</ul>

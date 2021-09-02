@@ -2,6 +2,7 @@ package com.mypack.service;
 
 import com.mypack.domain.Category;
 import com.mypack.domain.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,4 +28,8 @@ public interface UserService {
     User findByUserName(String username);
 
     int save(User user) throws Exception;
+
+    int updatePassword(String password, String uid);
+
+    int updateArea(String area,String uid);
 }

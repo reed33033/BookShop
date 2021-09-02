@@ -32,6 +32,23 @@ public interface BooksDao {
     int updateOne(Books books) throws Exception;
 
     @Select("select * from books where bid=#{bid}")
+    @Results({
+            @Result(id = true, property = "bid", column = "bid"),
+            @Result(property = "cid", column = "cid"),
+            @Result(property = "bname", column = "bname"),
+            @Result(property = "author", column = "author"),
+            @Result(property = "publish", column = "publish"),
+            @Result(property = "isbn", column = "isbn"),
+            @Result(property = "words", column = "words"),
+            @Result(property = "price", column = "price"),
+            @Result(property = "description", column = "description"),
+            @Result(property = "full_description", column = "full_description"),
+            @Result(property = "pic", column = "pic"),
+            @Result(property = "state", column = "state"),
+            @Result(property = "version", column = "version"),
+            @Result(property = "product_date", column = "product_date"),
+            @Result(property = "category", column = "cid", javaType = Category.class, one = @One(select = "com.mypack.dao.CateDao.findByCid")),
+    })
     Books findByBid(String bid);
 
     @Select("select count(*) from books where cid=#{cid}")

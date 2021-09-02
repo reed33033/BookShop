@@ -36,4 +36,19 @@ public class OrdersServiceImpl implements OrdersService {
     public void deleteByOid(String[] oids) throws Exception {
         ordersDao.deleteByOid(oids);
     }
+
+    @Override
+    public int updateState(String orders_number) {
+        return ordersDao.updateState(orders_number);
+    }
+
+    @Override
+    public List<Orders> findOrdersByUid(String uid) {
+        return ordersDao.findOrdersByUid(uid);
+    }
+
+    @Override
+    public void save(Orders orders) throws Exception {
+        ordersDao.save(orders);
+    }
 }

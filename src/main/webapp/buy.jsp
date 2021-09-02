@@ -24,12 +24,12 @@
 						<img width="125px" height="150px" src="${ctxPath }/${buyBook.pic}" class="img-polaroid" />
 					</div>
 					<div class="bookinfo pull-left">
-						<form action="${ctxPath }/trolley?func=addTrolley&bid=${buyBook.bid }" method="post">
+						<form action="${pageContext.request.contextPath}/trolley/trolleySave?bid=${buyBook.bid}" method="post">
 						<ul>
 							<li class="title">${buyBook.bname }</li>
 							<li class="" style="font-size:14px;">作者:${buyBook.author}</li>
 							<li class="price">￥${buyBook.price}</li>
-							<li><br><button type="submit" class="btn btn-danger">加入购物车</button> </li>
+							<li><br><button type="submit" class="btn btn-danger" href="">加入购物车</button> </li>
 						</ul>
 						</form>
 						<br><br><br>

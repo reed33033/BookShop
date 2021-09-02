@@ -1,5 +1,6 @@
 package com.mypack.controller;
 
+import com.mypack.domain.Orders;
 import com.mypack.domain.User;
 import com.mypack.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,5 +113,42 @@ public class UserController {
 
     }
 
+
+    @RequestMapping("/updatePassword")
+    public String updatePassword(String password,HttpSession session) throws IOException {
+        User user = (User)session.getAttribute("user");
+        if(user==null){
+            return "redirect:/login.jsp";
+        }else {
+            userService.updatePassword(password,user.getUid().toString());
+            User byUid = userService.findByUid(user.getUid().toString());
+            session.setAttribute("user",byUid);
+            return "redirect:/user/user.jsp";
+        }
+    }
+
+    @RequestMapping("/updateArea")
+    public String updateArea(String area,HttpSession session) throws IOException {
+        User user = (User)session.getAttribute("user");
+        if(user==null){
+            return "redirect:/login.jsp";
+        }else {
+            userService.updateArea(area,user.getUid().toString());
+            User byUid = userService.findByUid(user.getUid().toString());
+            session.setAttribute("user",byUid);
+            return "redirect:/user/user.jsp";
+        }
+    }
+
+
+    @RequestMapping("/userInfo")
+    public String userInfo(HttpSession session) throws IOException {
+        User user = (User)session.getAttribute("user");
+        if(user==null){
+            return "redirect:/login.jsp";
+        }else {
+            return "redirect:/user/user.jsp";
+        }
+    }
 
 }

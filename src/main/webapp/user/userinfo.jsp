@@ -25,16 +25,14 @@
 		  ${MSG_USER_UPDATE_RESULT}
 		</div>
 		 -->
-		<form action="${ctxPath }/user?func=updateUser" method="post">
+		<form action="${pageContext.request.contextPath}/user/updateArea" method="post">
 			<input type="hidden" name="uid" value="${user.uid }" />
 			<label>用户名</label>
-			<input type="text" class="form-control" name="username" placeholder="用户名" value="${user.username }"/>
+			<input type="text" class="form-control" name="username" placeholder="用户名" value="${user.username }" readonly/>
 			<label>姓名</label>
-			<input type="text" class="form-control" name="uname" placeholder="真实姓名" value="${user.uname }"/>
+			<input type="text" class="form-control" name="uname" placeholder="真实姓名" value="${user.uname }" readonly/>
 			<label>手机号码</label>
-			<input type="text" class="form-control" name="phone"  placeholder="手机号码" value="${user.phone }"/>
-			<label>密码</label>
-			<input type="text" class="form-control" name="password"  placeholder="密码" value="${user.password }"/>
+			<input type="text" class="form-control" name="phone"  placeholder="手机号码" value="${user.phone }" readonly/>
 			<label>联系地址</label>
 			<textarea rows="3" cols="" class="form-control" name="area" placeholder="联系地址"> ${user.area}</textarea>
 			<br>

@@ -17,14 +17,14 @@
 					alert("请先购物消费吧");
 					window.location = "index.jsp";
 				} else {
-					window.location = "orders?func=createOrders&sumPrice=" + sum_price + "&goodsCount=" + goods_count;
+					window.location = "/orders/ordersSave?sumPrice=" + sum_price + "&goodsCount=" + goods_count;
 				}
 			}
 
 			//删除购物车的方法
 			function deleteTrolley(tid) {
 				if (confirm("确定要删除吗？？？")) {
-					window.location = "trolley?func=deleteTrolley&tid=" + tid;
+					window.location = "/trolley/trolleyDelete?tid=" + tid+"&uid="+${user.uid};
 				}
 			}
 
@@ -42,7 +42,7 @@
 					$("#num").val(number);
 					alert("每人限购五件，库存不足~");
 				}
-				window.location = "trolley?func=addOrDeleteNumber&tid=" + tid + "&number=" + number;
+				window.location = "/trolley/addOrDeleteNumber?tid=" + tid + "&number=" + number+"&uid="+${user.uid};
 			}
 
 		</script>
@@ -80,7 +80,7 @@
 				<c:if test="${trolleys!=null}">
 				<c:forEach items="${trolleys}" var="trolley">
 					<tr>
-						<td><a href="${ctxPath }/books?func=buyBook&bid=${trolley.bid}">${trolley.books.bname }</a></td>
+						<td><a href="${pageContext.request.contextPath}/books/findBooksBybid?bid=${trolley.bid}">${trolley.books.bname }</a></td>
 						<td>￥${trolley.books.price }</td>
 						<td>
 						<div class="input-group input-group-sm">

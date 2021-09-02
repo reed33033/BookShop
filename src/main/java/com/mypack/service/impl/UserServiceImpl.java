@@ -74,4 +74,14 @@ public class UserServiceImpl implements UserService {
     public int save(User user) throws Exception {
         return userDao.save(user);
     }
+
+    @Override
+    public int updatePassword(String password, String uid) {
+        return userDao.updatePassword(password,uid);
+    }
+
+    @Override
+    public int updateArea(String area, String uid) {
+        return userDao.updateArea(area,uid);
+    }
 }

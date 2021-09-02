@@ -1,10 +1,13 @@
 package com.mypack.test;
 
 import com.mypack.dao.BooksDao;
+import com.mypack.dao.TrolleyDao;
 import com.mypack.dao.UserDao;
 import com.mypack.domain.Books;
+import com.mypack.domain.Trolley;
 import com.mypack.domain.User;
 import com.mypack.service.BooksService;
+import com.mypack.service.TrolleyService;
 import com.mypack.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +36,9 @@ public class adminTest {
     @Autowired
     private BooksService booksService;
 
+    @Autowired
+    private TrolleyService trolleyService;
+
     @Test
     public void test()
     {
@@ -45,5 +51,18 @@ public class adminTest {
         String isbn="9787115145543";
         Books booksByIsbn = booksService.findBooksByIsbn(isbn);
         System.out.println(booksByIsbn);
+    }
+
+    @Test
+    public void testTrollery()
+    {
+//        List<Trolley> allTrolley = trolleyService.findAllTrolley("8");
+//        for (Trolley trolley : allTrolley) {
+//            System.out.println(trolley);
+//        }
+
+        int i = trolleyService.updateNumber("6", "5");
+        System.out.println(i);
+
     }
 }
