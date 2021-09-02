@@ -44,6 +44,5 @@ public class InitDataListener implements InitializingBean, ServletContextAware {
         }
         servletContext.setAttribute("cateList",cateList);
         servletContext.setAttribute("hotBList",booksByState);
-        System.out.println(cateList);
     }
 }

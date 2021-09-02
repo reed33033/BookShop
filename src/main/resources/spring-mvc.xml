@@ -47,22 +47,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
 
-
-    <!--转换器-->
-<!--    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
-
-<!--        &lt;!&ndash; 配置自定义格式转换器&ndash;&gt;-->
-<!--        <property name="formatters">-->
-<!--            <list>-->
-<!--                <bean class="com.mypack.utils.DateFormatter">-->
-<!--                    <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>-->
-<!--                </bean>-->
-<!--                <bean class="com.mypack.Converter.BooksConverter"/>-->
-<!--            </list>-->
-
-<!--        </property>-->
-<!--    </bean>-->
-
+    <!-- 配置上传解析器 -->
+    <!-- 设置文件上传大小 -->
+    <!-- 配置编码 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="104857600"/>
         <property name="maxInMemorySize" value="4096"/>
