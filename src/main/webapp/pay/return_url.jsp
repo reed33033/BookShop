@@ -49,7 +49,7 @@
 
 	String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
 
-	response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
+//	response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 
 	System.out.println(basePath+"tfgvhbj");
 
@@ -66,18 +66,17 @@
 		
 		out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 
-
+		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 		//修改订单的状态，改为已支付、待发货
 
 	}else {
-
+		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 		out.println("验签失败");
 
 
 	}
 
-
-
+//	response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 	//——请在这里编写您的程序（以上代码仅作参考）——
 %>
 <body>

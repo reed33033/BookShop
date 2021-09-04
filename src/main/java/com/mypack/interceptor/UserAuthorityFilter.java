@@ -12,9 +12,7 @@ import java.io.IOException;
 
 /**
  * 访问权限过滤器
- *
  */
-//urlPatterns 过滤器拦截的url
 @WebFilter(
         urlPatterns = { "/admin/*" },
         initParams = { @WebInitParam(name = "loginPage", value = "admin/login.jsp") },
@@ -48,7 +46,8 @@ public class UserAuthorityFilter implements Filter {
         User user=(User)session.getAttribute("admin");
         String path = req.getRequestURI();
 
-//        if(path.contains("css") || path.contains("js") || path.contains("png")|| path.contains("jpg")|| path.contains("images")||path.contains("editor")){
+//        System.out.println(path);
+//        if(path.contains("css") || path.contains("js") || path.contains("png")|| path.contains("jpg")|| path.contains("images")||path.contains("editor")||path.contains("fonts")||path.contains("img")){
 //            //如果发现是css或者js文件，直接放行
 //            filterChain.doFilter(servletRequest, servletResponse);
 //        }

@@ -44,7 +44,7 @@
 	}
 	
 	boolean signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type); //调用SDK验证签名
-
+	String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
 	//——请在这里编写您的程序（以下代码仅作参考）——
 	
 	/* 实际验证过程建议商户务必添加以下校验：
@@ -55,7 +55,7 @@
 	*/
 	if(signVerified) {//验证成功
 		//商户订单号
-		String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
+		out_trade_no = new String(request.getParameter("out_trade_no").getBytes("UTF-8"),"UTF-8");
 	
 		//支付宝交易号
 		String trade_no = new String(request.getParameter("trade_no").getBytes("UTF-8"),"UTF-8");
@@ -80,7 +80,7 @@
 			//注意：
 			//付款完成后，支付宝系统发送该交易状态通知
 		}
-		
+		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 		out.println("success");
 	}else {//验证失败
 		out.println("fail");
@@ -88,6 +88,7 @@
 		//调试用，写文本函数记录程序运行情况是否正常
 		//String sWord = AlipaySignature.getSignCheckContentV1(params);
 		//AlipayConfig.logResult(sWord);
+		response.sendRedirect(basePath + "orders/ordersStateUpdate?orders_number=" + out_trade_no);
 	}
 	
 	//——请在这里编写您的程序（以上代码仅作参考）——

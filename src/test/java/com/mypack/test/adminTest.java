@@ -61,8 +61,10 @@ public class adminTest {
 //            System.out.println(trolley);
 //        }
 
-        int i = trolleyService.updateNumber("6", "5");
-        System.out.println(i);
+//        int i = trolleyService.updateNumber("6", "5");
+//        System.out.println(i);
+//        int x=20, y=5;
+//        System.out.println(x+y +""+(x+y)+y);
 
     }
 }

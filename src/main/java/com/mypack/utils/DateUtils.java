@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 日期转换工具类
+ */
 public class DateUtils {
 
     //日期转换成字符串

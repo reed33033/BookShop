@@ -1,5 +1,8 @@
 package com.mypack.utils;
 
+/**
+ * 图表转换实体类
+ */
 public class EchartsBean {
     String name;
     int value;

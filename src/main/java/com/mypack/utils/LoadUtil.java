@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 
+/**
+ * 上传下载图片工具类
+ */
 public class LoadUtil {
     //上传图片
     public static String uploadPhoto(MultipartFile loadimg, HttpSession session){

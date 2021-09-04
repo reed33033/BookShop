@@ -35,7 +35,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <!--    </mvc:interceptors>-->
 
 
-    <!--    配置权限拦截器-->
+<!--        配置权限拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <!--            配置对哪些资源执行拦截操作-->

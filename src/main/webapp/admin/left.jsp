@@ -52,8 +52,8 @@ $(function(){
         <li class="active"><cite></cite><a href="index.jsp" target="rightFrame">欢迎页面</a><i></i></li>
         
         <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAll" target="rightFrame">用户管理</a><i></i></li>
-        <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllCate" target="rightFrame">商品类别管理</a><i></i></li>
-        <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllBooks" target="rightFrame">商品管理</a><i></i></li>
+        <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllCate" target="rightFrame">图书类别管理</a><i></i></li>
+        <li><cite></cite><a href="${pageContext.request.contextPath}/admin/findAllBooks" target="rightFrame">图书管理</a><i></i></li>
             <li><cite></cite><a href="${pageContext.request.contextPath}/admin/showByCate" target="rightFrame">分类统计</a><i></i></li>
        
         

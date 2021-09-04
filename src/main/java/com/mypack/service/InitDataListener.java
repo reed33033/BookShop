@@ -18,6 +18,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.util.List;
 
+/**
+ * 初始化加载类
+ */
 @Component
 public class InitDataListener implements InitializingBean, ServletContextAware {
 
